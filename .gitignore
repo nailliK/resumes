@@ -4,6 +4,7 @@ masters/*.pdf
 job-feed
 resources
 Claude
+fonts
 node_modules
 .idea
 bun.lock

@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          lfs: true
 
       - uses: oven-sh/setup-bun@v2
 
@@ -23,8 +21,12 @@ jobs:
       - name: Install Chromium system dependencies
         run: bunx puppeteer browsers install chrome
 
-      - name: Copy fonts
+      - name: Download and install fonts
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          gh release download fonts --pattern "fonts.zip"
+          unzip fonts.zip
           mkdir -p ~/.local/share/fonts
           find fonts -type f \( -name "*.ttf" -o -name "*.otf" -o -name "*.woff" -o -name "*.woff2" \) -exec cp {} ~/.local/share/fonts/ \;
           fc-cache -f -v
