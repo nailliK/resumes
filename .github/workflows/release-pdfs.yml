@@ -18,14 +18,17 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Copy fonts for Puppeteer
+      - name: Install Chromium system dependencies
+        run: bunx puppeteer browsers install chrome
+
+      - name: Copy fonts
         run: |
           mkdir -p ~/.local/share/fonts
-          cp -r fonts/**/*.{ttf,otf,woff,woff2} ~/.local/share/fonts/ 2>/dev/null || true
+          find fonts -type f \( -name "*.ttf" -o -name "*.otf" -o -name "*.woff" -o -name "*.woff2" \) -exec cp {} ~/.local/share/fonts/ \;
           fc-cache -f -v
 
       - name: Generate PDFs
-        run: bunx md-to-pdf ./masters/*.md --stylesheet styles.css --basedir ./
+        run: bunx md-to-pdf ./masters/*.md --stylesheet styles.css --basedir ./ --launch-options '{"args":["--no-sandbox","--disable-setuid-sandbox"]}'
 
       - name: Upload PDFs to release
         env:
