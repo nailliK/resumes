@@ -30,6 +30,14 @@ jobs:
       - name: Generate PDFs
         run: bunx md-to-pdf ./masters/*.md --stylesheet styles.css --basedir ./ --launch-options '{"args":["--no-sandbox","--disable-setuid-sandbox"]}'
 
+      - name: Remove spaces from PDF filenames
+        run: |
+          for pdf in masters/*.pdf; do
+            [ -f "$pdf" ] || continue
+            newname="$(echo "$pdf" | tr -d ' ')"
+            [ "$pdf" != "$newname" ] && mv "$pdf" "$newname"
+          done
+
       - name: Upload PDFs to release
         env:
           GH_TOKEN: ${{ github.token }}
