@@ -1,0 +1,40 @@
+name: Generate PDF Resumes
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: write
+
+jobs:
+  build-pdfs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Copy fonts for Puppeteer
+        run: |
+          mkdir -p ~/.local/share/fonts
+          cp -r fonts/**/*.{ttf,otf,woff,woff2} ~/.local/share/fonts/ 2>/dev/null || true
+          fc-cache -f -v
+
+      - name: Generate PDFs
+        run: npx md-to-pdf ./masters/*.md --stylesheet styles.css --basedir ./
+
+      - name: Upload PDFs to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for pdf in masters/*.pdf; do
+            [ -f "$pdf" ] || continue
+            echo "Uploading: $pdf"
+            gh release upload "${{ github.event.release.tag_name }}" "$pdf" --clobber
+          done
