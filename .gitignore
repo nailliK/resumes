@@ -1,0 +1,10 @@
+_archive
+variants
+job-feed
+resources
+Claude
+node_modules
+fonts
+.idea
+bun.lock
+CLAUDE.md

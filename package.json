@@ -1,0 +1,11 @@
+{
+  "name": "resumes",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "md-to-pdf": "^5.2.5"
+  },
+  "scripts": {
+    "generate": "md-to-pdf ./variants/*.md --stylesheet styles.css --basedir ./"
+  }
+}
