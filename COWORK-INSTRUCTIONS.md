@@ -9,7 +9,7 @@
 - **Citizenship:** US Citizen
 
 ## Exclusions
-- Reddit, Meta, Amazon, X, Palantir, Flock Safety, Discord
+- Reddit, Meta, Amazon, X, Palantir, Flock Safety, Discord, Toast, GitHub, Dropbox, Webflow, SeatGeek
 - Defense/Military contractors
 - Crypto/Web3
 - Gambling
@@ -120,6 +120,7 @@ Reduce to 3 bullets per role (pick most relevant to THIS JD). Trim/remove 8+ yea
 - **Calling standard disclosures Easter eggs:** Consent notices, recording disclosures, legal boilerplate, and interview logistics are not Easter eggs. Do not flag them, do not mention them in cover letters, do not document them as special findings. Read the JD; the information you need is there.
 - **Closing JD tabs without confirmation:** NEVER close a candidate's JD tab unless the user explicitly confirms they have applied. Tabs persist until the user says so. This applies to both interactive sessions and the scheduled agent.
 - **Creating new tabs instead of reusing existing ones:** CAPTCHA/bot detection triggers more often when creating fresh tabs. Reuse existing tabs in the tab group by navigating them to new URLs. If the user has a site open outside the tab group, ask them to add it rather than opening a duplicate.
+- **Proceeding without login when a site requires it:** If a job board, ATS, or any site requires login and you are not logged in, STOP immediately. Do not attempt to proceed, navigate around the login, or skip the site silently. Notify the user that the site requires login and wait for them to log in before continuing. This is a hard gate; no work on that site until login is confirmed.
 
 ## Positioning & Differentiators
 - **People-focused leader first;** only emphasize hands-on if JD requires it

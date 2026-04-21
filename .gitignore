@@ -1,11 +1,21 @@
-_archive
-variants
-masters/*.pdf
-job-feed
-resources
-Claude
+# IDE and build
 fonts
 node_modules
 .idea
 bun.lock
+package-lock.json
+
+# Generated files
+_archive
+variants
+masters/*.pdf
+
+# AI Dirs
+Claude
+.claude
+job-feed
+
+# AI Instructions
 CLAUDE.md
+COWORK-INSTRUCTIONS.md
+DAILY-JOB-SEARCH.md
